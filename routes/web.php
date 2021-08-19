@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/', [\App\Http\Controllers\FileController::class, 'store']);
+Route::get('/{fileId}', [\App\Http\Controllers\FileController::class, 'show']);
+
+Route::post('/upload', [\App\Http\Controllers\UploadController::class, 'store']);
+Route::delete('/upload', [\App\Http\Controllers\UploadController::class, 'destroy']);
