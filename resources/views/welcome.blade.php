@@ -48,27 +48,27 @@
         </style>
     </head>
     <body class="antialiased">
-    @php
-    @endphp
         <div class="container">
             <div>
                 <section class="container-fluid">
                     <section class="row justify-content-center">
                         <section class="col-12 col-sm-10 col-md-8 col-lg-6">
-                            <form class="form-container">
+                            <form class="form-container" action="{{ route('file.store') }}" method="POST">
+                                @csrf
+                                @method('POST')
                                 <h3 class="text-center font-weight-bold text-uppercase"> File uploader </h3>
                                 <div class="form-group">
                                     <label for="storage-time"> Storage time </label>
-                                        <select class="custom-select" id="storage-time" name="store_time">
+                                        <select required class="custom-select" id="storage-time" name="store_time">
                                             <option value="1">1 day</option>
-                                            <option value="2">Veak</option>
-                                            <option value="3">month</option>
+                                            <option value="2">Weak</option>
+                                            <option value="3">Month</option>
                                         </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="file">Failas</label>
                                     <div onmouseover="" style="cursor: pointer;">
-                                        <input type="file" class="upload" name="upload" id="upload" placeholder="Failas">
+                                        <input required type="file" class="upload" name="upload" id="upload" placeholder="Failas">
                                     </div>
                                     <small class="text-muted form-text">* Max file size: {{ ini_get('post_max_size') }}B</small>
                                 </div>

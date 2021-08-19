@@ -29,8 +29,15 @@ class UploadController extends Controller
 
     public function destroy(Request $request)
     {
-        $file = json_decode($request->getContent(), true);
-        $delete = File::deleteDirectory(storage_path('app/uploads/tmp/' . $file['folder']));
+        $requestFile = json_decode($request->getContent(), true);
+
+        $tmpFile = TemporaryFile::where('folder', $requestFile['folder'])
+                                ->where('filename', $requestFile['filename'])
+                                ->get();
+
+        TemporaryFile::destroy($tmpFile);
+
+        $delete = File::deleteDirectory(storage_path('app/uploads/tmp/' . $requestFile['folder']));
 
         return ($delete) ? 'Deleted' : 'Delete Failed';
     }
