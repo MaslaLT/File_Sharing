@@ -3780,7 +3780,7 @@
         dropValidation: [false, Type.BOOLEAN], // Enable or disable validating files on drop
         ignoredFiles: [['.ds_store', 'thumbs.db', 'desktop.ini'], Type.ARRAY],
 
-        // Upload related
+        // UploadFile related
         instantUpload: [true, Type.BOOLEAN], // Should upload files immediately on drop
         maxParallelUploads: [2, Type.INT], // Maximum files to upload in parallel
         allowMinimumUploadDuration: [true, Type.BOOLEAN], // if true uploads take at least 750 ms, this ensures the user sees the upload progress giving trust the upload actually happened
@@ -3817,8 +3817,8 @@
         labelFileRemoved: ['Removed', Type.STRING], // assistive only
         labelFileRemoveError: ['Error during remove', Type.STRING],
         labelFileProcessing: ['Uploading', Type.STRING],
-        labelFileProcessingComplete: ['Upload complete', Type.STRING],
-        labelFileProcessingAborted: ['Upload cancelled', Type.STRING],
+        labelFileProcessingComplete: ['UploadFile complete', Type.STRING],
+        labelFileProcessingAborted: ['UploadFile cancelled', Type.STRING],
         labelFileProcessingError: ['Error during upload', Type.STRING],
         labelFileProcessingRevertError: ['Error during revert', Type.STRING],
 
@@ -3832,7 +3832,7 @@
         labelButtonAbortItemProcessing: ['Cancel', Type.STRING],
         labelButtonUndoItemProcessing: ['Undo', Type.STRING],
         labelButtonRetryItemProcessing: ['Retry', Type.STRING],
-        labelButtonProcessItem: ['Upload', Type.STRING],
+        labelButtonProcessItem: ['UploadFile', Type.STRING],
 
         // make sure width and height plus viewpox are even numbers so icons are nicely centered
         iconRemove: [
@@ -11905,7 +11905,7 @@
                 getFile: getFile,
 
                 /**
-                 * Upload file with given name
+                 * UploadFile file with given name
                  * @param query { string, number, null  }
                  */
                 processFile: processFile,

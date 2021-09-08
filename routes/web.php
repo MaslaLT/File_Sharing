@@ -16,9 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/', [\App\Http\Controllers\UploadController::class, 'uploadTmp']);
+Route::delete('/', [\App\Http\Controllers\UploadController::class, 'destroyTmp']);
 
-Route::post('/', [\App\Http\Controllers\FileController::class, 'store'])->name('file.store');
-Route::get('/{fileId}', [\App\Http\Controllers\FileController::class, 'show'])->name('file.show');
+Route::post('/upload', [\App\Http\Controllers\UploadController::class, 'store'])->name('upload.store');
 
-Route::post('/upload', [\App\Http\Controllers\UploadController::class, 'store']);
-Route::delete('/upload', [\App\Http\Controllers\UploadController::class, 'destroy']);
+Route::get('/upload/{link}', [\App\Http\Controllers\UploadController::class, 'find'])->name('upload.find');
+Route::get('/upload/{link}/password', function($link) {
+            return view('password', ['link' => $link]);
+            })->name('upload.password');
+
+Route::post('/upload/{link}', [\App\Http\Controllers\UploadController::class, 'auth'])->name('upload.auth');
+Route::get('upload/{link}/show', [\App\Http\Controllers\UploadController::class, 'show'])->name('upload.show');
+Route::get('upload/{link}/download', [\App\Http\Controllers\UploadController::class, 'download'])->name('upload.download');
